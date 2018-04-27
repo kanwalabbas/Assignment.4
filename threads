@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<pthread.h>
+#define count 10
+
+void * sum_val(void * arg);
+int arr[1000];
+
+int main()
+{
+ for(int i=0; i<1000; i++)
+      arr[i]++;
+ 
+ pthread_t t[10];
+  for(int j=0; j<10; j++)
+  pthread_create(&t[j], NULL, sum_val, (void*)count);
+  
+  for(int j=0; j<10; j++)
+  pthread_join[t[j],NULL);
+  
+  printf("Exiting Main function");
+  return 0;
+}
+
+void * sum_val(void * arg)
+{
+int sum=0;
+int *num= (int*) arg;  
+  
+  for(int i=*num*100; i<(*num*100)+100; i++)
+  {
+     	 sum += arr[i];
+         printf("Sum of values of array", sum);
+		 
+		 }	 
+}
